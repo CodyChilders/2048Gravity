@@ -53,6 +53,10 @@ public class BallBehavior : MonoBehaviour
         Debug.Assert(logBase2 == Mathf.Floor(logBase2));
 
         int index = (int)logBase2 - 1;
+        if(index >= materials.Length)
+        {
+            index = materials.Length - 1;
+        }
         return index;
     }
 

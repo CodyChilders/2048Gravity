@@ -15,15 +15,39 @@ public class BallBehavior : MonoBehaviour
     }
 
     int currentValue = 2;
+    Camera camera = null;
 
     void Start()
     {
         SetMaterial();
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        Debug.Assert(camera != null);
     }
 
     void Update()
     {
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
+    private void OnGUI()
+    {
+        const int labelWidth = 80;
+        const int labelHeight = 20;
+        Vector3 screenPosition = camera.WorldToScreenPoint(transform.position);
+        screenPosition.y = Screen.height - screenPosition.y;
+        /*
+        Rect rect = new Rect(screenPosition.x - (labelWidth / 2), 
+                             screenPosition.y - (labelHeight / 2), 
+                             labelWidth, labelHeight);
+        */
+        Rect rect = new Rect(screenPosition.x, screenPosition.y, labelWidth, labelHeight);
+        GUI.contentColor = Color.black;
+        GUI.Label(rect, currentValue.ToString());
     }
 
     void SetMaterial()

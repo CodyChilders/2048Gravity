@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnBalls : MonoBehaviour
 {
     public GameObject ballTemplate;
+    public GameObject ballContainer;
     public float spawnFrequency = 1;
 
     GameObject[] ballSpawns;
@@ -28,6 +29,7 @@ public class SpawnBalls : MonoBehaviour
         GameObject chosenSpawn = SelectSpawn();
         GameObject newBall = Instantiate(ballTemplate);
         newBall.transform.position = chosenSpawn.transform.position;
+        newBall.transform.parent = ballContainer.transform;
 
         //chain this into the next ball spawning
         Invoke("SpawnBall", spawnFrequency);

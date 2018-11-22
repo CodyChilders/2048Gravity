@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23091323392646542}
   - component: {fileID: 135364769610018052}
   - component: {fileID: 54839744211003592}
+  - component: {fileID: 114292733603432504}
   m_Layer: 0
   m_Name: NumberedBall
   m_TagString: Untagged
@@ -100,6 +101,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &114292733603432504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495231545190492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44062b40f038d964cb0ddf3bb5849e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: aef10fab3ff16ac4999635f742b76944, type: 2}
+  - {fileID: 2100000, guid: 305391dfebf03b8439dfc1f9b8b55599, type: 2}
+  - {fileID: 2100000, guid: 772641c86d43d9c49a9c4ef565410cf8, type: 2}
+  - {fileID: 2100000, guid: 6ef22269f73d2aa42bc0eebd144e62f8, type: 2}
+  - {fileID: 2100000, guid: df7683d4e2c022b43809346298f50803, type: 2}
+  - {fileID: 2100000, guid: 11a237175c934dd4380a642851c885de, type: 2}
+  - {fileID: 2100000, guid: 1ed1044152c7b8d45a755bb91e697f01, type: 2}
+  - {fileID: 2100000, guid: 2013896f950b8174194efe65811249f6, type: 2}
+  - {fileID: 2100000, guid: 24eb090da94defe419ba0c4a8ebd7aa7, type: 2}
+  - {fileID: 2100000, guid: ec5a9cc4238f5f144baa1ca188e3f31a, type: 2}
+  - {fileID: 2100000, guid: 20aa538e8af4af74e8d1ae8aaf143a32, type: 2}
+  - {fileID: 2100000, guid: fca7a44961a824741972d2ef5a753124, type: 2}
 --- !u!135 &135364769610018052
 SphereCollider:
   m_ObjectHideFlags: 1

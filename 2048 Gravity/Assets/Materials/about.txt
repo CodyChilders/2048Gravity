@@ -1,0 +1,14 @@
+RGB values found from this website: http://scrambledeggsontoast.github.io/2014/05/09/writing-2048-elm/
+
+Number 2 -> rgb 238 228 218
+Number 4 -> rgb 237 224 200
+Number 8 -> rgb 242 177 121
+Number 16 -> rgb 245 149 99
+Number 32 -> rgb 246 124 95
+Number 64 -> rgb 246 94 59
+Number 128 -> rgb 237 207 114
+Number 256 -> rgb 237 204 97
+Number 512 -> rgb 237 200 80
+Number 1024 -> rgb 237 197 63
+Number 2048 -> rgb 237 194 46
+otherwise -> rgba 238 228 218 0.35 -- empty tile

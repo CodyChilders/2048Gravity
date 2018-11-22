@@ -7,6 +7,7 @@ public class SpawnBalls : MonoBehaviour
     public GameObject ballTemplate;
     public GameObject ballContainer;
     public float spawnFrequency = 1;
+    public float deathPlane = -50;
 
     GameObject[] ballSpawns;
 
@@ -21,7 +22,10 @@ public class SpawnBalls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(transform.position.y < deathPlane)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void SpawnBall()

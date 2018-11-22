@@ -37,9 +37,10 @@ public class BallBehavior : MonoBehaviour
     /// </summary>
     /// <param name="val">A power of two.</param>
     /// <returns>The index in the materials array.</returns>
+    /// <exception cref="ArgumentException">If a negative, 0, or non-power-of-two number was given.</exception>
     int ValueToIndex(int val)
     {
-        if(val < 0)
+        if(val <= 0)
         {
             throw new ArgumentException("Must call ValueToIndex on a positive number.");
         }

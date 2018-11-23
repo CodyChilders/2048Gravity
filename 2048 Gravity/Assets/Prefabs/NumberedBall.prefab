@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114292733603432504}
   m_Layer: 0
   m_Name: NumberedBall
-  m_TagString: Untagged
+  m_TagString: NumberedBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44062b40f038d964cb0ddf3bb5849e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPlane: -10
+  chanceOf4: 0.15
   materials:
   - {fileID: 2100000, guid: aef10fab3ff16ac4999635f742b76944, type: 2}
   - {fileID: 2100000, guid: 305391dfebf03b8439dfc1f9b8b55599, type: 2}

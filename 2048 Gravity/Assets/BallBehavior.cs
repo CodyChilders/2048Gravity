@@ -15,7 +15,7 @@ public class BallBehavior : MonoBehaviour
     }
 
     int currentValue = 2;
-    Camera camera = null;
+    new Camera camera = null;
 
     void Start()
     {
@@ -29,9 +29,45 @@ public class BallBehavior : MonoBehaviour
 
     }
 
+    public void DoubleValue()
+    {
+        currentValue *= 2;
+        SetMaterial();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        
+        //if it is not a ball, return
+        GameObject target = collision.gameObject;
+        if (!target.tag.Equals("NumberedBall"))
+        {
+            return;
+        }
+
+        //if the values are not equal, no need to merge
+        int val1 = CurrentValue;
+        int val2 = target.GetComponent<BallBehavior>().CurrentValue;
+        if(val1 != val2)
+        {
+            return;
+        }
+
+        //double the value of the lower-altitude ball, and destroy the higher-altitude one
+        GameObject highest;
+        GameObject lowest;
+        if (transform.position.y >= target.transform.position.y)
+        {
+            highest = gameObject;
+            lowest = target;
+        }
+        else
+        {
+            highest = target;
+            lowest = gameObject;
+        }
+
+        Destroy(highest);
+        lowest.GetComponent<BallBehavior>().DoubleValue();
     }
 
     private void OnGUI()

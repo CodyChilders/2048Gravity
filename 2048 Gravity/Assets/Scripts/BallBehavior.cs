@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
 {
+    public AudioClip hitNoMerge;
+    public AudioClip hitMerge;
+    public AudioClip hitNonBall;
+    public AudioClip destroyed;
+    public AudioClip got2048; //special case of merging
+
     public float deathPlane = -10;
     public float chanceOf4 = 0.15f;
 
@@ -19,22 +25,37 @@ public class BallBehavior : MonoBehaviour
     }
 
     int currentValue = 2;
-    new Camera camera = null;
+    Camera cam = null;
+    AudioSource audioSource;
 
     void Start()
     {
         DetermineInitialValue();
         SetMaterial();
-        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        Debug.Assert(camera != null);
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        Debug.Assert(cam != null);
+        audioSource = GetComponent<AudioSource>();
+        Debug.Assert(audioSource != null);
     }
 
     void Update()
     {
         if (transform.position.y < deathPlane)
         {
+            PlaySound(destroyed);
             Destroy(gameObject);
         }
+    }
+
+    void PlaySound(AudioClip ac)
+    {
+        if(ac == null)
+        {
+            throw new ArgumentNullException("Must give an audio clip.");
+        }
+
+        audioSource.clip = ac;
+        audioSource.Play();
     }
 
     void DetermineInitialValue()
@@ -59,6 +80,7 @@ public class BallBehavior : MonoBehaviour
         GameObject target = collision.gameObject;
         if (!target.tag.Equals("NumberedBall"))
         {
+            //PlaySound(hitNonBall);
             return;
         }
 
@@ -67,6 +89,7 @@ public class BallBehavior : MonoBehaviour
         int val2 = target.GetComponent<BallBehavior>().CurrentValue;
         if(val1 != val2)
         {
+            PlaySound(hitNoMerge);
             return;
         }
 
@@ -84,15 +107,27 @@ public class BallBehavior : MonoBehaviour
             lowest = gameObject;
         }
 
+        
         Destroy(highest);
-        lowest.GetComponent<BallBehavior>().DoubleValue();
+
+        BallBehavior lowestBB = lowest.GetComponent<BallBehavior>();
+        lowestBB.DoubleValue();
+
+        if (lowestBB.CurrentValue == 2048)
+        {
+            PlaySound(got2048);
+        }
+        else
+        {
+            PlaySound(hitMerge);
+        }
     }
 
     private void OnGUI()
     {
         const int labelWidth = 80;
         const int labelHeight = 20;
-        Vector3 screenPosition = camera.WorldToScreenPoint(transform.position);
+        Vector3 screenPosition = cam.WorldToScreenPoint(transform.position);
         screenPosition.y = Screen.height - screenPosition.y;
         /*
         Rect rect = new Rect(screenPosition.x - (labelWidth / 2), 

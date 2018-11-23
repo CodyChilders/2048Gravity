@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
 {
+    public float deathPlane = -10;
+
     public Material[] materials = new Material[12];
+
     public int CurrentValue
     {
         get
@@ -26,7 +29,10 @@ public class BallBehavior : MonoBehaviour
 
     void Update()
     {
-
+        if (transform.position.y < deathPlane)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void DoubleValue()

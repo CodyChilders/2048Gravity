@@ -16,7 +16,7 @@ public class SpawnBalls : MonoBehaviour
         ballSpawns = gameObject.GetChildObjects();
         if(ballSpawns == null || ballSpawns.Length == 0)
         {
-            throw new InvalidDataException("Cannot locate spawn points.");
+            throw new MissingObjectException("Cannot locate spawn points.");
         }
         Invoke("SpawnBall", spawnFrequency);
     }
@@ -51,8 +51,6 @@ public class SpawnBalls : MonoBehaviour
 
     GameObject SelectSpawn()
     {
-        Debug.Assert(ballSpawns != null && ballSpawns.Length > 0);
-
         float rand01 = Random.value;
         float randRange = rand01 * ballSpawns.Length;
         int index = Mathf.FloorToInt(randRange);

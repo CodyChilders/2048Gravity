@@ -39,7 +39,7 @@ public class BallBehavior : MonoBehaviour
 
     void DetermineInitialValue()
     {
-        Debug.Assert(chanceOf4 >= 0 && chanceOf4 <= 1);
+        chanceOf4 = Mathf.Clamp01(chanceOf4);
         float rand01 = UnityEngine.Random.value;
         if(rand01 < chanceOf4)
         {

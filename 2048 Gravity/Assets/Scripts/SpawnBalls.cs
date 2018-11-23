@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SpawnBalls : MonoBehaviour
@@ -8,18 +9,18 @@ public class SpawnBalls : MonoBehaviour
     public GameObject ballContainer;
     public float spawnFrequency = 1;
     
-
     GameObject[] ballSpawns;
 
-
-    // Use this for initialization
     void Start()
     {
         ballSpawns = gameObject.GetChildObjects();
+        if(ballSpawns == null || ballSpawns.Length == 0)
+        {
+            throw new InvalidDataException("Cannot locate spawn points.");
+        }
         Invoke("SpawnBall", spawnFrequency);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

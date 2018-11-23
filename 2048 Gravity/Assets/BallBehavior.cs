@@ -6,6 +6,7 @@ using UnityEngine;
 public class BallBehavior : MonoBehaviour
 {
     public float deathPlane = -10;
+    public float chanceOf4 = 0.15f;
 
     public Material[] materials = new Material[12];
 
@@ -22,6 +23,7 @@ public class BallBehavior : MonoBehaviour
 
     void Start()
     {
+        DetermineInitialValue();
         SetMaterial();
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         Debug.Assert(camera != null);
@@ -32,6 +34,16 @@ public class BallBehavior : MonoBehaviour
         if (transform.position.y < deathPlane)
         {
             Destroy(gameObject);
+        }
+    }
+
+    void DetermineInitialValue()
+    {
+        Debug.Assert(chanceOf4 >= 0 && chanceOf4 <= 1);
+        float rand01 = UnityEngine.Random.value;
+        if(rand01 < chanceOf4)
+        {
+            currentValue = 4;
         }
     }
 

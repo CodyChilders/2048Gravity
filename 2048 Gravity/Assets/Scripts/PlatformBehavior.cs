@@ -32,8 +32,16 @@ public class PlatformBehavior : MonoBehaviour
         Vector3 currentGravity = Physics.gravity;
         float length = currentGravity.magnitude;
         Vector3 accelerometer = Input.acceleration;
+        accelerometer = RotateForControls(accelerometer);
         Vector3 accelerometerNormalized = accelerometer.normalized;
         Physics.gravity = accelerometerNormalized * length;
+    }
+
+    Vector3 RotateForControls(Vector3 v)
+    {
+        Vector3 ret = Quaternion.Euler(-90, 0, 0) * v;
+        ret.z *= -1;
+        return ret;
     }
 
     /*private void OnGUI()

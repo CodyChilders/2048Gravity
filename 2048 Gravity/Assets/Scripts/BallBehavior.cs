@@ -42,7 +42,7 @@ public class BallBehavior : MonoBehaviour
     {
         if (transform.position.y < deathPlane)
         {
-            PlaySound(destroyed);
+            //PlaySound(destroyed);
             Destroy(gameObject);
         }
     }

@@ -15,22 +15,31 @@ public class PlatformBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ChangeGravity();
+        /*
         Vector3 acc = Input.acceleration.normalized;
-        if (Vector3.Magnitude(acc) != 0)
-        {
-            Debug.DrawRay(transform.position, acc, Color.cyan);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, Vector3.left, Color.cyan);
-        }
-
-        //angle on the x-axis
-        float xAngle = Vector3.Angle(acc, Vector3.left);
-        float zAngle = Vector3.Angle(acc, Vector3.forward);
+        
+        float xAngle = Vector3.Angle(acc, Vector3.down);
+        //float zAngle = Vector3.Angle(acc, Vector3.forward);
 
         transform.rotation = initialOrientation;
-        transform.Rotate(Vector3.left, xAngle);
-        transform.Rotate(Vector3.forward, zAngle);
+        transform.Rotate(Vector3.forward, xAngle);
+        //transform.Rotate(Vector3.forward, zAngle);*/
     }
+
+    void ChangeGravity()
+    {
+        Vector3 currentGravity = Physics.gravity;
+        float length = currentGravity.magnitude;
+        Vector3 accelerometer = Input.acceleration;
+        Vector3 accelerometerNormalized = accelerometer.normalized;
+        Physics.gravity = accelerometerNormalized * length;
+    }
+
+    /*private void OnGUI()
+    {
+        Vector3 acc = Input.acceleration.normalized;
+        string accStr = string.Format("[{0}, {1}, {2}]", acc.x, acc.y, acc.z);
+        GUI.Label(new Rect(5, 5, 20, 20), accStr);
+    }*/
 }

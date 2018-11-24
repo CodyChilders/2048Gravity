@@ -176,6 +176,11 @@ public class BallBehavior : MonoBehaviour
 
     bool IsPowerOfTwo(int num)
     {
+        if(num < 0)
+        {
+            throw new NotImplementedException("This function only works with positive numbers.");
+        }
+
         const int bitsInInt = 32;
         //Just count bits. If there is a single 1 and all the rest are 0, then we have a power of 2.
         int onesFound = 0;

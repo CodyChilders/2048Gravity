@@ -8,4 +8,5 @@ interface GameMode
     void BallMerged(GameObject ball, int value);
     void BallDestroyed(GameObject ball, int value);
     void EndGame();
+    string DisplayStatus();
 } 

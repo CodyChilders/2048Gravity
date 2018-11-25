@@ -32,4 +32,9 @@ public class SuddenDeathMode : GameMode
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public string DisplayStatus()
+    {
+        return "Don't drop any balls!";
+    }
 }

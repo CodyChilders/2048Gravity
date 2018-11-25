@@ -55,8 +55,11 @@ public class BallBehavior : MonoBehaviour
             throw new ArgumentNullException("Must give an audio clip.");
         }
 
-        audioSource.clip = ac;
-        audioSource.Play();
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = ac;
+            audioSource.Play();
+        }
     }
 
     void DetermineInitialValue()

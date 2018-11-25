@@ -34,4 +34,9 @@ class LivesMode : GameMode
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public string DisplayStatus()
+    {
+        return string.Format("{0} lives remaining.", livesRemaining);
+    }
 }

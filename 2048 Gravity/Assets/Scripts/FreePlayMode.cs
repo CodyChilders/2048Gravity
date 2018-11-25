@@ -36,4 +36,9 @@ public class FreePlayMode : GameMode
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public string DisplayStatus()
+    {
+        return string.Format("{0} points", score);
+    }
 }

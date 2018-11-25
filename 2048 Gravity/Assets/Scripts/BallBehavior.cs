@@ -43,6 +43,7 @@ public class BallBehavior : MonoBehaviour
         if (transform.position.y < deathPlane)
         {
             //PlaySound(destroyed);
+            GameState.GetGameController().BallDestroyed(gameObject, currentValue);
             Destroy(gameObject);
         }
     }
@@ -114,13 +115,15 @@ public class BallBehavior : MonoBehaviour
         lowestBB.DoubleValue();
 
         if (lowestBB.CurrentValue == 2048)
-        {
+        {  
             PlaySound(got2048);
         }
         else
         {
             PlaySound(hitMerge);
         }
+
+        GameState.GetGameController().BallMerged(lowest, lowestBB.CurrentValue);
     }
 
     private void OnGUI()

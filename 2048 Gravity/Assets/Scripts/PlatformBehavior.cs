@@ -21,6 +21,10 @@ public class PlatformBehavior : MonoBehaviour
         Vector3 currentGravity = Physics.gravity;
         float length = currentGravity.magnitude;
         Vector3 accelerometer = Input.acceleration;
+        if(accelerometer.magnitude == 0)
+        {
+            accelerometer = Vector3.back;
+        }
         accelerometer = RotateForControls(accelerometer);
         Vector3 accelerometerNormalized = accelerometer.normalized;
         Physics.gravity = accelerometerNormalized * length;

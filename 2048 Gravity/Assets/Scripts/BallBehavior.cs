@@ -38,7 +38,7 @@ public class BallBehavior : MonoBehaviour
         Debug.Assert(cam != null);
         audioSource = GetComponent<AudioSource>();
         Debug.Assert(audioSource != null);
-        gs = new GUIStyle() { fontSize = 150 };
+        gs = new GUIStyle() { fontSize = 30 };
     }
 
     void Update()

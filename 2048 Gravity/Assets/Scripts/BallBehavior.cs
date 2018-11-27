@@ -16,6 +16,8 @@ public class BallBehavior : MonoBehaviour
 
     public Material[] materials = new Material[12];
 
+    GUIStyle gs;
+
     public int CurrentValue
     {
         get
@@ -36,6 +38,7 @@ public class BallBehavior : MonoBehaviour
         Debug.Assert(cam != null);
         audioSource = GetComponent<AudioSource>();
         Debug.Assert(audioSource != null);
+        gs = new GUIStyle() { fontSize = 150 };
     }
 
     void Update()
@@ -142,7 +145,7 @@ public class BallBehavior : MonoBehaviour
         */
         Rect rect = new Rect(screenPosition.x, screenPosition.y, labelWidth, labelHeight);
         GUI.contentColor = Color.black;
-        GUI.Label(rect, currentValue.ToString());
+        GUI.Label(rect, currentValue.ToString(), gs);
     }
 
     void SetMaterial()

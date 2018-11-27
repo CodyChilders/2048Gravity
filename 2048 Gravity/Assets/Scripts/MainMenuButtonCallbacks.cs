@@ -33,9 +33,4 @@ public class MainMenuButtonCallbacks : MonoBehaviour
         GameState.ConfigureForFreePlay();
         SceneManager.LoadScene("Game");
     }
-
-    public void ExitGameButton()
-    {
-        Environment.Exit(0);
-    }
 }

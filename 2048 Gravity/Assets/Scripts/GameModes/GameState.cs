@@ -34,7 +34,7 @@ static class GameState
 
     public static void ConfigureForRainbow()
     {
-        //currentMode = new RainbowMode();
+        currentMode = new RainbowMode();
     }
 
     public static void ConfigureForFibonacci()

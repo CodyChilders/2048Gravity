@@ -104,13 +104,6 @@ public class TwentyFortyEight : GameMode
         mats[9]  = Resources.Load<Material>("TwentyFortyEight/1024");
         mats[10] = Resources.Load<Material>("TwentyFortyEight/2048");
         mats[11] = Resources.Load<Material>("TwentyFortyEight/4096+");
-        int nulls = 0;
-        for(int i = 0; i < mats.Length; i++)
-        {
-            if (mats[i] == null)
-                nulls++;
-        }
-        Debug.LogWarningFormat("{0} materials failed to load.", nulls);
         return mats;
     }
 

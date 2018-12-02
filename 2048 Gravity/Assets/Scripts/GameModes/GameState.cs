@@ -39,6 +39,6 @@ static class GameState
 
     public static void ConfigureForFibonacci()
     {
-        //currentMode = new FibonacciMode();
+        currentMode = new FibonacciMode();
     }
 }

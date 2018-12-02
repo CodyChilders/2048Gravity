@@ -12,23 +12,33 @@ static class GameState
         if(currentMode == null)
         {
             Debug.LogWarning("No game mode was selected when a Game Controller was accessed, so it defaulted to free play.");
-            ConfigureForFreePlay();
+            ConfigureFor2048();
         }
         return currentMode;
     }
 
     public static void ConfigureForSuddenDeath()
     {
-        currentMode = new SuddenDeathMode();
+        //currentMode = new SuddenDeathMode();
     }
 
     public static void ConfigureForLives()
     {
-        currentMode = new LivesMode();
+        //currentMode = new LivesMode();
     }
 
-    public static void ConfigureForFreePlay()
+    public static void ConfigureFor2048()
     {
-        currentMode = new FreePlayMode();
+        currentMode = new TwentyFortyEight();
+    }
+
+    public static void ConfigureForRainbow()
+    {
+        //currentMode = new RainbowMode();
+    }
+
+    public static void ConfigureForFibonacci()
+    {
+        //currentMode = new FibonacciMode();
     }
 }

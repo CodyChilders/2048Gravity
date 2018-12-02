@@ -212,22 +212,8 @@ MonoBehaviour:
   hitMerge: {fileID: 8300000, guid: dfa0757b8f20bd847afa0f2a3632f0aa, type: 3}
   hitNonBall: {fileID: 8300000, guid: c2581f1e4d7f9264dbd11bc44e12d17d, type: 3}
   destroyed: {fileID: 8300000, guid: 210e7fc286cf5bb4585b7f1ad94f0a49, type: 3}
-  got2048: {fileID: 8300000, guid: 391b3567dd42e72409fef091938d2b86, type: 3}
+  gotTarget: {fileID: 8300000, guid: 391b3567dd42e72409fef091938d2b86, type: 3}
   deathPlane: -10
-  chanceOf4: 0.15
-  materials:
-  - {fileID: 2100000, guid: aef10fab3ff16ac4999635f742b76944, type: 2}
-  - {fileID: 2100000, guid: 305391dfebf03b8439dfc1f9b8b55599, type: 2}
-  - {fileID: 2100000, guid: 772641c86d43d9c49a9c4ef565410cf8, type: 2}
-  - {fileID: 2100000, guid: 6ef22269f73d2aa42bc0eebd144e62f8, type: 2}
-  - {fileID: 2100000, guid: df7683d4e2c022b43809346298f50803, type: 2}
-  - {fileID: 2100000, guid: 11a237175c934dd4380a642851c885de, type: 2}
-  - {fileID: 2100000, guid: 1ed1044152c7b8d45a755bb91e697f01, type: 2}
-  - {fileID: 2100000, guid: 2013896f950b8174194efe65811249f6, type: 2}
-  - {fileID: 2100000, guid: 24eb090da94defe419ba0c4a8ebd7aa7, type: 2}
-  - {fileID: 2100000, guid: ec5a9cc4238f5f144baa1ca188e3f31a, type: 2}
-  - {fileID: 2100000, guid: 20aa538e8af4af74e8d1ae8aaf143a32, type: 2}
-  - {fileID: 2100000, guid: fca7a44961a824741972d2ef5a753124, type: 2}
 --- !u!135 &135364769610018052
 SphereCollider:
   m_ObjectHideFlags: 1

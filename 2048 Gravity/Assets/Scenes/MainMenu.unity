@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 29349139}
   - component: {fileID: 29349138}
   m_Layer: 5
-  m_Name: SuddenDeathButton
+  m_Name: FibonacciButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1071969588}
-        m_MethodName: SuddenDeathButton
+        m_MethodName: FibonacciButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -380,7 +380,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Free Play
+  m_Text: '2048
 
 '
 --- !u!222 &603303064
@@ -457,7 +457,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sudden Death
+  m_Text: Fibonacci
 --- !u!222 &647038626
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 672044562}
   - component: {fileID: 672044561}
   m_Layer: 5
-  m_Name: 10LivesButton
+  m_Name: RainbowButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -542,7 +542,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1071969588}
-        m_MethodName: TenLivesButton
+        m_MethodName: RainbowButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -826,7 +826,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '10 lives
+  m_Text: 'Rainbow
 
 '
 --- !u!222 &1576576888
@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 1840858630}
   - component: {fileID: 1840858629}
   m_Layer: 5
-  m_Name: FreePlayButton
+  m_Name: 2048Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1071969588}
-        m_MethodName: FreePlayButton
+        m_MethodName: TwentyFortyEightButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -28,9 +28,21 @@ public class MainMenuButtonCallbacks : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void FreePlayButton()
+    public void TwentyFortyEightButton()
     {
-        GameState.ConfigureForFreePlay();
+        GameState.ConfigureFor2048();
+        SceneManager.LoadScene("Game");
+    }
+
+    public void RainbowButton()
+    {
+        GameState.ConfigureForRainbow();
+        SceneManager.LoadScene("Game");
+    }
+
+    public void FibonacciButton()
+    {
+        GameState.ConfigureForFibonacci();
         SceneManager.LoadScene("Game");
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SuddenDeathMode : GameMode
+public class SuddenDeathMode //: GameMode
 {
     int livesRemaining = 1;
 
@@ -36,5 +36,25 @@ public class SuddenDeathMode : GameMode
     public string DisplayStatus()
     {
         return "Don't drop any balls!";
+    }
+
+    public Material GetMaterial(int currentValue)
+    {
+        return null;
+    }
+
+    public bool ShouldMerge(int a, int b)
+    {
+        return false;
+    }
+
+    public bool IsTargetValue(int val)
+    {
+        return false;
+    }
+
+    public int GetInitialValue()
+    {
+        return 1;
     }
 }

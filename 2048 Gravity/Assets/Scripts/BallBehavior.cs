@@ -9,12 +9,9 @@ public class BallBehavior : MonoBehaviour
     public AudioClip hitMerge;
     public AudioClip hitNonBall;
     public AudioClip destroyed;
-    public AudioClip got2048; //special case of merging
+    public AudioClip gotTarget; //special case of merging
 
     public float deathPlane = -10;
-    public float chanceOf4 = 0.15f;
-
-    public Material[] materials = new Material[12];
 
     GUIStyle gs;
 
@@ -24,15 +21,19 @@ public class BallBehavior : MonoBehaviour
         {
             return currentValue;
         }
+        set
+        {
+            currentValue = value;
+        }
     }
 
-    int currentValue = 2;
+    int currentValue;
     Camera cam = null;
     AudioSource audioSource;
 
     void Start()
     {
-        DetermineInitialValue();
+        currentValue = GameState.GetGameController().GetInitialValue();
         SetMaterial();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         Debug.Assert(cam != null);
@@ -65,22 +66,6 @@ public class BallBehavior : MonoBehaviour
         }
     }
 
-    void DetermineInitialValue()
-    {
-        chanceOf4 = Mathf.Clamp01(chanceOf4);
-        float rand01 = UnityEngine.Random.value;
-        if(rand01 < chanceOf4)
-        {
-            currentValue = 4;
-        }
-    }
-
-    public void DoubleValue()
-    {
-        currentValue *= 2;
-        SetMaterial();
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         //if it is not a ball, return
@@ -94,7 +79,7 @@ public class BallBehavior : MonoBehaviour
         //if the values are not equal, no need to merge
         int val1 = CurrentValue;
         int val2 = target.GetComponent<BallBehavior>().CurrentValue;
-        if(val1 != val2)
+        if(!GameState.GetGameController().ShouldMerge(val1, val2))
         {
             PlaySound(hitNoMerge);
             return;
@@ -118,11 +103,13 @@ public class BallBehavior : MonoBehaviour
         Destroy(highest);
 
         BallBehavior lowestBB = lowest.GetComponent<BallBehavior>();
-        lowestBB.DoubleValue();
+        int newValue = GameState.GetGameController().Merge(val1, val2);
+        lowestBB.CurrentValue = newValue;
+        lowestBB.SetMaterial();
 
-        if (lowestBB.CurrentValue == 2048)
+        if (GameState.GetGameController().IsTargetValue(lowestBB.CurrentValue))
         {  
-            PlaySound(got2048);
+            PlaySound(gotTarget);
         }
         else
         {
@@ -148,57 +135,9 @@ public class BallBehavior : MonoBehaviour
         GUI.Label(rect, currentValue.ToString(), gs);
     }
 
-    void SetMaterial()
+    public void SetMaterial()
     {
-        Material desiredMaterial = materials[ValueToIndex(currentValue)];
+        Material desiredMaterial = GameState.GetGameController().GetMaterial(currentValue);
         GetComponent<Renderer>().material = desiredMaterial;
-    }
-
-    /// <summary>
-    /// Takes a value that is a power of two, and converts it into the array index we need in the materials array.
-    /// </summary>
-    /// <param name="val">A power of two.</param>
-    /// <returns>The index in the materials array.</returns>
-    /// <exception cref="ArgumentException">If a negative, 0, or non-power-of-two number was given.</exception>
-    int ValueToIndex(int val)
-    {
-        if(val <= 0)
-        {
-            throw new ArgumentException("Must call ValueToIndex on a positive number.");
-        }
-        if(!IsPowerOfTwo(val))
-        {
-            throw new ArgumentException("Must call ValueToIndex on a power of two.");
-        }
-
-        float logBase2 = Mathf.Log(val, 2);
-        //make sure it is an integer
-        Debug.Assert(logBase2 == Mathf.Floor(logBase2));
-
-        int index = (int)logBase2 - 1;
-        if(index >= materials.Length)
-        {
-            index = materials.Length - 1;
-        }
-        return index;
-    }
-
-    bool IsPowerOfTwo(int num)
-    {
-        if(num < 0)
-        {
-            throw new NotImplementedException("This function only works with positive numbers.");
-        }
-
-        const int bitsInInt = 32;
-        //Just count bits. If there is a single 1 and all the rest are 0, then we have a power of 2.
-        int onesFound = 0;
-        //written this way so the compiler can easily unroll it. This method should be branchless in an optimized build.
-        for(int i = 0; i < bitsInInt; i++)
-        {
-            onesFound += num & 1;
-            num >>= 1;
-        }
-        return onesFound == 1;
     }
 }

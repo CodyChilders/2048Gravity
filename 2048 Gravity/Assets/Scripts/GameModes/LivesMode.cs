@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-class LivesMode : GameMode
+class LivesMode //: GameMode
 {
     int livesRemaining = 10;
 
@@ -38,5 +38,25 @@ class LivesMode : GameMode
     public string DisplayStatus()
     {
         return string.Format("{0} lives remaining.", livesRemaining);
+    }
+
+    public Material GetMaterial(int currentValue)
+    {
+        return null;
+    }
+
+    public bool ShouldMerge(int a, int b)
+    {
+        return false;
+    }
+
+    public bool IsTargetValue(int value)
+    {
+        return false;
+    }
+
+    public int GetInitialValue()
+    {
+        return 1;
     }
 }

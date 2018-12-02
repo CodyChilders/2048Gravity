@@ -52,12 +52,20 @@ public class FibonacciMode : GameMode
     public Material GetMaterial(int val)
     {
         Debug.Assert(IsFibonacci(val));
-        return materials[FibonacciIndex(val)];
+        int index = FibonacciIndex(val);
+        return materials[index];
     }
 
     public bool ShouldMerge(int a, int b)
     {
-        return SequentialFibonacci(a, b);
+        try
+        {
+            return SequentialFibonacci(a, b);
+        }
+        catch(InvalidOperationException)
+        {
+            return false;
+        }
     }
 
     public int Merge(int a, int b)

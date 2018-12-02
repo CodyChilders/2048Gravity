@@ -76,7 +76,7 @@ public class BallBehavior : MonoBehaviour
             return;
         }
 
-        //if the values are not equal, no need to merge
+        //if the values are not compatible, no need to merge
         int val1 = CurrentValue;
         int val2 = target.GetComponent<BallBehavior>().CurrentValue;
         if(!GameState.GetGameController().ShouldMerge(val1, val2))
@@ -99,7 +99,7 @@ public class BallBehavior : MonoBehaviour
             lowest = gameObject;
         }
 
-        
+        highest.GetComponent<BallBehavior>().CurrentValue = -1;
         Destroy(highest);
 
         BallBehavior lowestBB = lowest.GetComponent<BallBehavior>();
@@ -107,7 +107,7 @@ public class BallBehavior : MonoBehaviour
         lowestBB.CurrentValue = newValue;
         lowestBB.SetMaterial();
 
-        if (GameState.GetGameController().IsTargetValue(lowestBB.CurrentValue))
+        if (GameState.GetGameController().IsTargetValue(newValue))
         {  
             PlaySound(gotTarget);
         }
@@ -116,7 +116,7 @@ public class BallBehavior : MonoBehaviour
             PlaySound(hitMerge);
         }
 
-        GameState.GetGameController().BallMerged(lowest, lowestBB.CurrentValue);
+        GameState.GetGameController().BallMerged(lowest, newValue);
     }
 
     private void OnGUI()

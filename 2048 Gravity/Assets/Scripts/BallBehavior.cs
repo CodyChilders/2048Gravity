@@ -121,18 +121,16 @@ public class BallBehavior : MonoBehaviour
 
     private void OnGUI()
     {
-        const int labelWidth = 80;
-        const int labelHeight = 20;
-        Vector3 screenPosition = cam.WorldToScreenPoint(transform.position);
-        screenPosition.y = Screen.height - screenPosition.y;
-        /*
-        Rect rect = new Rect(screenPosition.x - (labelWidth / 2), 
-                             screenPosition.y - (labelHeight / 2), 
-                             labelWidth, labelHeight);
-        */
-        Rect rect = new Rect(screenPosition.x, screenPosition.y, labelWidth, labelHeight);
-        GUI.contentColor = Color.black;
-        GUI.Label(rect, currentValue.ToString(), gs);
+        if (GameState.GetGameController().ShouldDisplayValue())
+        {
+            const int labelWidth = 80;
+            const int labelHeight = 20;
+            Vector3 screenPosition = cam.WorldToScreenPoint(transform.position);
+            screenPosition.y = Screen.height - screenPosition.y;
+            Rect rect = new Rect(screenPosition.x, screenPosition.y, labelWidth, labelHeight);
+            GUI.contentColor = Color.black;
+            GUI.Label(rect, currentValue.ToString(), gs);
+        }
     }
 
     public void SetMaterial()
